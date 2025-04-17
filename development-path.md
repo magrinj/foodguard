@@ -6,24 +6,24 @@ A comprehensive, actionable checklist for building FoodGuard, split into logical
 
 ## 1. 🏁 Project Initialization
 - [x] Initialize Yarn 4 Monorepo with Workspaces
-- [ ] Set up strict TypeScript config (root + packages)
-- [ ] Configure ESLint + Prettier (shared config)
-- [ ] Set up absolute imports (`@/src/...`)
-- [ ] Create shared packages: `@foodguard/types`, `@foodguard/utils`
-- [ ] Add .yarnrc.yml for environment enforcement
-- [ ] Initialize Git repository and .gitignore
+- [x] Set up strict TypeScript config (root + packages)
+- [x] Configure ESLint + Prettier (shared config)
+- [x] Set up absolute imports (`@/src/...`)
+- [x] Create shared packages: `@foodguard/types`, `@foodguard/utils`
+- [x] Add .yarnrc.yml for environment enforcement
+- [x] Initialize Git repository and .gitignore
 
 ---
 
 ## 2. 🛠️ Backend (NestJS + GraphQL + Prisma)
-- [ ] Scaffold NestJS app with GraphQL (code-first)
-- [ ] Set up Prisma with PostgreSQL
-- [ ] Define core data models (User, Recipe, Place, Comment, Vote, Tag, etc.)
-- [ ] Implement authentication (JWT, refresh tokens, anonymous mode)
-- [ ] Integrate Amazon S3/Minio for media storage
+- [x] Scaffold NestJS app with GraphQL (code-first)
+- [x] Set up Prisma with PostgreSQL
+- [x] Define core data models (User, Recipe, Place, Comment, Vote, Tag, etc.)
+- [x] Implement authentication (JWT, refresh tokens, anonymous mode)
+- [x] Integrate Amazon S3/Minio for media storage
 - [ ] Implement GraphQL resolvers for:
-  - [ ] Recipes (CRUD, search, AI generation, voting, comments)
-  - [ ] Places (CRUD, search, reviews, moderation)
+  - [x] Recipes (CRUD, search, AI generation, voting, comments)
+  - [x] Places (CRUD, search, reviews, moderation)
   - [ ] Users (profile, preferences, saved items)
   - [ ] Tags, dietary filters, allergen filters
 - [ ] WebSocket subscriptions (comments, feedback)
@@ -64,10 +64,10 @@ A comprehensive, actionable checklist for building FoodGuard, split into logical
 ---
 
 ## 4. 🤖 AI & Personalization
-- [ ] Integrate AI for recipe generation (OpenAI/custom model)
+- [x] Integrate AI for recipe generation (OpenAI/custom model)
 - [ ] Context-aware prompts (allergen history, likes/dislikes)
 - [ ] Feedback loop (votes, comments, tag interactions)
-- [ ] Daily AI Recipe of the Day
+- [x] Daily AI Recipe of the Day
 - [ ] Sentiment analysis on comments
 - [ ] Adaptive suggestions
 

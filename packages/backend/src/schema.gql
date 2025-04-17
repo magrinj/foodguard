@@ -1,0 +1,248 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Allergen {
+  id: ID!
+  name: String!
+}
+
+type AnonymousChallengeResponse {
+  tokens: TokenModel!
+  user: UserEntity!
+}
+
+type AuthResponse {
+  tokens: TokenModel!
+  user: UserEntity!
+}
+
+type ChallengeResponse {
+  message: String!
+  success: Boolean!
+}
+
+type Comment {
+  author: User!
+  authorId: String!
+  content: String!
+  createdAt: DateTime!
+  id: ID!
+  placeId: String
+  recipeId: String
+  updatedAt: DateTime!
+}
+
+input CreateRecipeInput {
+  allergenIds: [String!]
+  cookTime: Int!
+  description: String!
+  dietaryTagIds: [String!]
+  difficulty: RecipeDifficulty!
+  images: [String!]
+  ingredients: [String!]!
+  instructions: [String!]!
+  isAIGenerated: Boolean
+  prepTime: Int!
+  servings: Int!
+  tagIds: [String!]
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type DietaryTag {
+  id: ID!
+  name: String!
+}
+
+type Mutation {
+  challenge(email: String!): ChallengeResponse!
+  challengeAnonymous: AnonymousChallengeResponse!
+  createRecipe(createRecipeInput: CreateRecipeInput!): Recipe!
+  getUploadUrl(fileType: String!, folder: String!): UploadUrlResponse!
+  logout(refreshToken: String!): Boolean!
+  refreshToken(refreshToken: String!): TokenModel!
+  removeRecipe(id: String!): Recipe!
+  updateRecipe(updateRecipeInput: UpdateRecipeInput!): Recipe!
+  verify(email: String!, token: String!): AuthResponse!
+}
+
+type Place {
+  addedBy: User!
+  addedById: String!
+  address: String!
+  comments: [Comment!]
+  createdAt: DateTime!
+  description: String!
+  glutenFreeScore: Float!
+  hasFullGFKitchen: Boolean!
+  id: ID!
+  images: [String!]!
+  latitude: Float!
+  longitude: Float!
+  name: String!
+  phone: String
+  tags: [Tag!]
+  updatedAt: DateTime!
+  votes: [Vote!]
+  website: String
+}
+
+type Query {
+  healthCheck: String!
+  recipe(id: String!): Recipe!
+  recipeOfTheDay: Recipe!
+  recipes(skip: Int, take: Int): [Recipe!]!
+  recipesByAllergen(allergenId: String!, skip: Int, take: Int): [Recipe!]!
+  recipesByAuthor(authorId: String!, skip: Int, take: Int): [Recipe!]!
+  recipesByDietaryTag(dietaryTagId: String!, skip: Int, take: Int): [Recipe!]!
+  recipesByTag(skip: Int, tagId: String!, take: Int): [Recipe!]!
+  searchRecipes(query: String!, skip: Int, take: Int): [Recipe!]!
+}
+
+type Recipe {
+  allergens: [Allergen!]
+  author: User!
+  authorId: String!
+  comments: [Comment!]
+  cookTime: Float!
+  createdAt: DateTime!
+  description: String!
+  dietaryTags: [DietaryTag!]
+  difficulty: RecipeDifficulty!
+  id: ID!
+  images: [String!]!
+  ingredients: [String!]!
+  instructions: [String!]!
+  isAIGenerated: Boolean!
+  prepTime: Float!
+  servings: Float!
+  tags: [Tag!]
+  title: String!
+  updatedAt: DateTime!
+  votes: [Vote!]
+}
+
+"""The difficulty level of a recipe"""
+enum RecipeDifficulty {
+  EASY
+  HARD
+  MEDIUM
+}
+
+type RefreshToken {
+  createdAt: DateTime!
+  expiresAt: DateTime!
+  id: ID!
+  token: String!
+  user: User!
+  userId: String!
+}
+
+type SavedPlace {
+  place: Place!
+  placeId: String!
+  savedAt: DateTime!
+  user: User!
+  userId: String!
+}
+
+type SavedRecipe {
+  recipe: Recipe!
+  recipeId: String!
+  savedAt: DateTime!
+  user: User!
+  userId: String!
+}
+
+type Tag {
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  type: String!
+  updatedAt: DateTime!
+}
+
+type TokenModel {
+  accessToken: String!
+  expiresAt: DateTime!
+  refreshToken: String!
+  tokenType: String!
+}
+
+input UpdateRecipeInput {
+  allergenIds: [String!]
+  cookTime: Int
+  description: String
+  dietaryTagIds: [String!]
+  difficulty: RecipeDifficulty
+  id: String!
+  images: [String!]
+  ingredients: [String!]
+  instructions: [String!]
+  isAIGenerated: Boolean
+  prepTime: Int
+  servings: Int
+  tagIds: [String!]
+  title: String
+}
+
+type UploadUrlResponse {
+  fileUrl: String!
+  key: String!
+  uploadUrl: String!
+}
+
+type User {
+  allergens: [Allergen!]
+  avatar: String
+  comments: [Comment!]
+  createdAt: DateTime!
+  dietaryTags: [DietaryTag!]
+  email: String!
+  id: ID!
+  isAnonymous: Boolean!
+  name: String
+  places: [Place!]
+  recipes: [Recipe!]
+  refreshTokens: [RefreshToken!]
+  savedPlaces: [SavedPlace!]
+  savedRecipes: [SavedRecipe!]
+  updatedAt: DateTime!
+  verificationTokens: [VerificationToken!]
+  votes: [Vote!]
+}
+
+type UserEntity {
+  avatar: String
+  createdAt: DateTime!
+  email: String!
+  id: ID!
+  isAnonymous: Boolean!
+  name: String
+  updatedAt: DateTime!
+}
+
+type VerificationToken {
+  createdAt: DateTime!
+  email: String!
+  expiresAt: DateTime!
+  id: ID!
+  token: String!
+  user: User!
+  userId: String!
+}
+
+type Vote {
+  createdAt: DateTime!
+  id: ID!
+  placeId: String
+  recipeId: String
+  user: User!
+  userId: String!
+  value: Float!
+}

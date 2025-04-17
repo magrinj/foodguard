@@ -1,0 +1,9 @@
+{
+  "name": "@foodguard/utils",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.ts",
+  "files": [
+    "index.ts"
+  ]
+}
